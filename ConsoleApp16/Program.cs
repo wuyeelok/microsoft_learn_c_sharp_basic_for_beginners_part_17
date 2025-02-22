@@ -6,12 +6,18 @@ Console.WriteLine($"Hello, World! Part {p}");
 List<int> scores = new List<int> { 180, 2, 97, 92, 81, 60, 300 };
 
 
+//Query syntax:
 // Define the query expression.
-IEnumerable<int> scoreQuery =
-    from score in scores
-    where score > 80 && score % 2 == 0
-    orderby score descending
-    select score;
+// IEnumerable<int> scoreQuery =
+//     from score in scores
+//     where score > 80 && score % 2 == 0
+//     orderby score descending
+//     select score;
+
+//Method syntax:
+IEnumerable<int> scoreQuery = scores
+.Where(s => s > 80 && s % 2 == 0)
+.OrderByDescending(s => s);
 
 // Convert IEnumerable to List.
 List<int> myScores = [.. scoreQuery];
